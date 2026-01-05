@@ -1,14 +1,18 @@
-# Orion - Android AI Assistant
+# Orion
 
-A privacy-focused Android AI assistant that supports both local on-device inference and cloud-based AI providers.
+This is where it all started.
 
-## Features
+Orion is my attempt to build a personal AI that truly belongs to you. Not a service, not a subscription — software that runs on your phone, keeps your data private, and works even when everything else fails.
 
-- **Hybrid AI**: Switch between local models (Gemma 3, Qwen 3 via llama.cpp) and cloud providers (OpenAI, Anthropic Claude, Google Gemini, DeepSeek, Alibaba Qwen, Moonshot Kimi)
-- **Private Memory System**: Encrypted conversation memory that stays on your device
-- **Emergency Mode**: Mesh network communication via Bluetooth/WiFi Direct for disaster scenarios
-- **Multi-language**: Spanish and English support
-- **Voice Mode**: Continuous voice interaction for hands-free use
+This repository contains v99, an early version. It's messy, it's real, and it's the foundation for everything that came after.
+
+## What Orion does
+
+- Runs AI models locally on your device (llama.cpp)
+- Connects to cloud providers when you want more power
+- Remembers conversations with encrypted memory
+- Works offline in emergencies via mesh networking
+- Speaks your language
 
 ## Development Philosophy
 
@@ -106,3 +110,7 @@ This project showcases the development process. The code is provided for educati
 
 - [llama.cpp](https://github.com/ggerganov/llama.cpp) - Local LLM inference (MIT License)
 - OkHttp, Jetpack Compose, and other Android libraries
+
+---
+
+*This is just the beginning.*
