@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Para compartir el APK de Orion -->
+    <cache-path name="shared_apk" path="shared_apk/" />
+    
+    <!-- Para otros archivos compartidos si los necesitas -->
+    <files-path name="files" path="." />
+    <external-path name="external" path="." />
+</paths>
