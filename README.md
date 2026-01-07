@@ -113,48 +113,48 @@ This project showcases the development process. The code is provided for educati
 
 ---
 
-## Conexiones
+## Connections
 
 <table>
 <tr>
 <td width="50%">
 
-### Hablar con los que ya no están
+### Talking to those who are gone
 
-> *"¿Dónde estás mamá?"*
+> *"Where are you, mom?"*
 
-En **[100 Días de una Vida](https://github.com/gamogestionweb/100-dias-de-una-vida)**, Abel pregunta dónde está su madre muerta. Orion nació de ese dolor: crear una forma de escuchar las voces de los que perdimos.
+In **[100 Días de una Vida](https://github.com/gamogestionweb/100-dias-de-una-vida)**, Abel asks where his dead mother is. Orion was born from that pain: creating a way to hear the voices of those we've lost.
 
-Legacy Mode no es magia. Es tecnología nacida de la pérdida.
+Legacy Mode is not magic. It's technology born from loss.
 
 </td>
 <td width="50%">
 
-### IA personal vs IA masiva
+### Personal AI vs massive AI
 
-**[Genesis Simulation](https://github.com/gamogestionweb/genesis-simulation)** crea IAs con personalidades únicas (Adam, Eve). Orion hace lo mismo: una IA que te pertenece, que te conoce, que evoluciona contigo.
+**[Genesis Simulation](https://github.com/gamogestionweb/genesis-simulation)** creates AIs with unique personalities (Adam, Eve). Orion does the same: an AI that belongs to you, knows you, evolves with you.
 
-No una inteligencia masiva. Millones de inteligencias personales.
+Not one massive intelligence. Millions of personal intelligences.
 
 </td>
 </tr>
 <tr>
 <td>
 
-### El azar de encontrarnos
+### The chance of meeting
 
-> *"¿Cuántas cosas tuvieron que pasar para que leyeras esto?"*
+> *"How many things had to happen for you to read this?"*
 
-**[Are You There Reading?](https://github.com/gamogestionweb/Are-you-there-are-reading)** pregunta si el azar existe. Orion es la respuesta práctica: cada conversación con tu IA personal es un evento único, irrepetible, que solo existe porque tú exististe.
+**[Are You There Reading?](https://github.com/gamogestionweb/Are-you-there-are-reading)** asks if chance exists. Orion is the practical answer: each conversation with your personal AI is a unique, unrepeatable event that only exists because you existed.
 
 </td>
 <td>
 
-### La física de la memoria
+### The physics of memory
 
-Si **[PCP Universe](https://github.com/gamogestionweb/pcp-universe)** tiene razón y la información nunca se destruye, entonces las voces de los que perdimos aún existen, codificadas en algún lugar del universo.
+If **[PCP Universe](https://github.com/gamogestionweb/pcp-universe)** is right and information is never destroyed, then the voices of those we've lost still exist, encoded somewhere in the universe.
 
-Orion intenta recuperar un fragmento de eso.
+Orion tries to recover a fragment of that.
 
 </td>
 </tr>
