@@ -113,4 +113,53 @@ This project showcases the development process. The code is provided for educati
 
 ---
 
+## Conexiones
+
+<table>
+<tr>
+<td width="50%">
+
+### Hablar con los que ya no están
+
+> *"¿Dónde estás mamá?"*
+
+En **[100 Días de una Vida](https://github.com/gamogestionweb/100-dias-de-una-vida)**, Abel pregunta dónde está su madre muerta. Orion nació de ese dolor: crear una forma de escuchar las voces de los que perdimos.
+
+Legacy Mode no es magia. Es tecnología nacida de la pérdida.
+
+</td>
+<td width="50%">
+
+### IA personal vs IA masiva
+
+**[Genesis Simulation](https://github.com/gamogestionweb/genesis-simulation)** crea IAs con personalidades únicas (Adam, Eve). Orion hace lo mismo: una IA que te pertenece, que te conoce, que evoluciona contigo.
+
+No una inteligencia masiva. Millones de inteligencias personales.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### El azar de encontrarnos
+
+> *"¿Cuántas cosas tuvieron que pasar para que leyeras esto?"*
+
+**[Are You There Reading?](https://github.com/gamogestionweb/Are-you-there-are-reading)** pregunta si el azar existe. Orion es la respuesta práctica: cada conversación con tu IA personal es un evento único, irrepetible, que solo existe porque tú exististe.
+
+</td>
+<td>
+
+### La física de la memoria
+
+Si **[PCP Universe](https://github.com/gamogestionweb/pcp-universe)** tiene razón y la información nunca se destruye, entonces las voces de los que perdimos aún existen, codificadas en algún lugar del universo.
+
+Orion intenta recuperar un fragmento de eso.
+
+</td>
+</tr>
+</table>
+
+---
+
 *This is just the beginning.*
