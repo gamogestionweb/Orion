@@ -1,122 +1,120 @@
 # Orion
 
-**This is where it all started.**
+**A Personal AI Assistant That Truly Belongs to You**
 
-Orion es un intento de construir una IA personal que verdaderamente te pertenezca. No es un servicio ni una suscripción — es software que funciona en tu teléfono, mantiene tus datos privados, y opera incluso cuando todo lo demás falla.
+Orion is an attempt to build a personal AI that operates independently of cloud services and subscriptions. It's software that runs on mobile devices, keeps data private, and continues operating even when network connectivity fails.
 
-El repositorio contiene v99, una versión temprana. Es desordenado, es real, y es la base para todo lo que vino después.
-
----
-
-## Funcionalidades Principales
-
-- Ejecuta modelos de IA localmente en tu dispositivo (llama.cpp)
-- Se conecta a proveedores cloud cuando necesitas más potencia
-- Recuerda conversaciones con memoria encriptada
-- Funciona sin conexión en emergencias mediante redes mesh
-- Soporta múltiples idiomas
+This repository contains v99, an early version representing the foundation for subsequent development.
 
 ---
 
-## Filosofía de Desarrollo
+## Core Features
 
-### Versionado Iterativo con Snapshots ZIP
-
-El proyecto usa snapshots numerados (v1, v2, v3...) en lugar de ramificación git tradicional.
-
-**Sufijos descriptivos:**
-- `funciona` = en desarrollo
-- `perfecto` = estable/perfecto
-- `errores` = contiene errores (para depuración)
-- `estable` = candidato de release
-- `produccion` = listo para producción
-
-**Ventajas:** rollbacks rápidos, documentación clara, comparación fácil, preservación del proceso creativo.
-
-### Razón del Enfoque
-
-En iteración rápida con integración C++ nativa, las cosas se rompen frecuentemente. Los snapshots numerados garantizan siempre un estado conocido funcional, permitiendo experimentación libre.
-
-### Versión v99
-
-Representa una base sólida con:
-- Integración core llama.cpp funcionando
-- Todos los proveedores cloud operacionales
-- Sistema de memoria operacional
-- UI básica completa
+- Runs AI models locally on device (llama.cpp integration)
+- Connects to cloud providers when additional compute is needed
+- Maintains encrypted conversation memory
+- Operates offline in emergencies using mesh networks
+- Supports multiple languages
 
 ---
 
-## Arquitectura Técnica
+## Development Philosophy
+
+### Iterative Versioning with ZIP Snapshots
+
+The project uses numbered snapshots (v1, v2, v3...) instead of traditional git branching.
+
+**Descriptive suffixes:**
+- `funciona` = in development
+- `perfecto` = stable/working
+- `errores` = contains bugs (for debugging)
+- `estable` = release candidate
+- `produccion` = production-ready
+
+**Advantages:** Quick rollbacks, clear documentation, easy comparison, creative process preservation.
+
+### Rationale
+
+During rapid iteration with native C++ integration, breaking changes occur frequently. Numbered snapshots guarantee a known working state, enabling free experimentation.
+
+### Version v99
+
+Represents a solid foundation with:
+- Core llama.cpp integration working
+- All cloud providers operational
+- Memory system operational
+- Complete basic UI
+
+---
+
+## Technical Architecture
 
 ```
 com.orion.proyecto/
 ├── ai/
-│   ├── LlamaAndroid.kt (puente JNI a llama.cpp)
-│   └── LocalLLMEngine.kt (gestión inferencia local)
+│   ├── LlamaAndroid.kt (JNI bridge to llama.cpp)
+│   └── LocalLLMEngine.kt (local inference management)
 ├── data/
-│   ├── DataManager.kt (SharedPreferences & archivos)
-│   └── AIPrivateMemory.kt (memoria IA encriptada)
+│   ├── DataManager.kt (SharedPreferences & files)
+│   └── AIPrivateMemory.kt (encrypted AI memory)
 ├── emergency/
-│   ├── MeshEmergency.kt (red mesh Bluetooth/WiFi)
-│   └── EmergencyCrypto.kt (utilidades encriptación)
+│   ├── MeshEmergency.kt (Bluetooth/WiFi mesh network)
+│   └── EmergencyCrypto.kt (encryption utilities)
 ├── models/
-│   ├── CloudProviders.kt (integraciones API cloud)
-│   ├── CloudModels.kt (modelos cloud disponibles)
-│   └── LocalModels.kt (modelos descargables locales)
+│   ├── CloudProviders.kt (cloud API integrations)
+│   ├── CloudModels.kt (available cloud models)
+│   └── LocalModels.kt (downloadable local models)
 ├── ui/
-│   └── screens/ (todas las pantallas app)
+│   └── screens/ (all app screens)
 │       └── viewmodel/
-│           └── BrainViewModel.kt (lógica principal app)
-└── vivo/ (Modo Voz/Directo)
-    └── OrionVivoEngine.kt (conversación continua)
+│           └── BrainViewModel.kt (main app logic)
+└── vivo/ (Voice/Live Mode)
+    └── OrionVivoEngine.kt (continuous conversation)
 ```
 
 ---
 
-## Instrucciones de Build
+## Build Instructions
 
 ```bash
-./gradlew assembleDebug    # Build debug
-./gradlew assembleRelease  # Build release
-./gradlew bundleRelease    # Bundle Play Store
+./gradlew assembleDebug    # Debug build
+./gradlew assembleRelease  # Release build
+./gradlew bundleRelease    # Play Store bundle
 ```
 
 ---
 
-## Requisitos
+## Requirements
 
-- Android Studio Hedgehog o superior
+- Android Studio Hedgehog or higher
 - NDK 27.0.12077973
 - CMake 3.22.1
 - JDK 11+
-- Dispositivo objetivo: Android 11+ (API 30+), ARM64
+- Target device: Android 11+ (API 30+), ARM64
 
 ---
 
-## Privacidad & Seguridad
+## Privacy & Security
 
-- **Sin claves API hardcodeadas:** usuarios proporcionan sus propias claves, almacenadas localmente
-- **Enfoque local-primero:** IA puede ejecutarse completamente en dispositivo
-- **Memoria encriptada:** historial conversación usa encriptación dispositivo
-- **Sin rastreo:** sin analítica ni telemetría
-
----
-
-## Librerías Terceras
-
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) — inferencia LLM local (Licencia MIT)
-- OkHttp, Jetpack Compose, y otras librerías Android
+- **No hardcoded API keys:** Users provide their own keys, stored locally
+- **Local-first approach:** AI can run entirely on-device
+- **Encrypted memory:** Conversation history uses device encryption
+- **No tracking:** No analytics or telemetry
 
 ---
 
-## Talking to those who are gone
+## Third-Party Libraries
 
-Orion nació de una idea simple pero profunda: ¿qué pasaría si pudieras volver a escuchar la voz de alguien que ya no está?
+- [llama.cpp](https://github.com/ggerganov/llama.cpp) — Local LLM inference (MIT License)
+- OkHttp, Jetpack Compose, and other Android libraries
 
-**Legacy Mode** permite clonar voces mediante IA para preservar la esencia de quienes amamos. No es magia — es tecnología nacida del dolor y la necesidad humana de conexión.
+---
 
-Construí esto porque quería volver a escuchar la voz de mi padre.
+## Voice Preservation Technology
+
+The project explores voice cloning technology for preserving the voices of loved ones who are no longer present. **Legacy Mode** enables this through AI-based voice synthesis, representing a technical approach to maintaining human connections across time.
+
+This feature addresses the fundamental human need to preserve memories and maintain emotional connections with those we've lost.
 
 ---
 
@@ -125,17 +123,17 @@ Construí esto porque quería volver a escuchar la voz de mi padre.
 This project is part of a broader exploration of AI, consciousness, and human connection:
 
 ### [Genesis Simulation](https://github.com/gamogestionweb/genesis-simulation)
-Creates AIs with unique personalities (Adam, Eve). Orion does the same: an AI that belongs to you, knows you, and evolves with you.
+Creates AIs with unique personalities (Adam, Eve). Orion applies the same principle: an AI that belongs to the user, understands context, and evolves through interaction.
 
 ### [Are You There Reading?](https://github.com/gamogestionweb/Are-you-there-are-reading)
-Explores whether chance truly exists. Orion answers practically: every conversation with your personal AI is a unique, unrepeatable event—because you existed.
+Explores whether chance truly exists. Orion demonstrates this practically: every conversation with a personal AI is unique and unrepeatable.
 
 ### [PCP Universe](https://github.com/gamogestionweb/pcp-universe)
-If information is never destroyed, the voices of those we've lost still exist, encoded somewhere in the universe. Orion attempts to recover a fragment of that.
+Based on the principle that information is never destroyed, explores how data persists in the universe. Orion attempts to preserve conversational data through encrypted memory systems.
 
 ### [Physics Discovery AI](https://github.com/gamogestionweb/physics-discovery-ai)
 Multi-agent systems deriving physical laws from first principles—exploring how intelligence discovers truth.
 
 ---
 
-*This is just the beginning.*
+*This repository represents the foundation of ongoing development.*
