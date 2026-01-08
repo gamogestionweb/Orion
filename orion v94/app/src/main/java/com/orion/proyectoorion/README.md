@@ -1,100 +1,100 @@
 # 🌟 ORION - AI Assistant
 
-Asistente de IA avanzado con múltiples motores (Cloud, Local, Vivo) y **Modo Emergencia** con comunicación mesh.
+Advanced AI assistant with multiple engines (Cloud, Local, Live) and **Emergency Mode** with mesh communication.
 
-## 🆕 MODO EMERGENCIA (Nuevo)
+## 🆕 EMERGENCY MODE (New)
 
-Comunicación sin Internet mediante red mesh WiFi Direct. Perfecto para:
-- 🆘 Emergencias y desastres naturales
-- 📵 Zonas sin cobertura móvil
-- 🔒 Comunicación privada cifrada
+Internet-free communication via WiFi Direct mesh network. Perfect for:
+- 🆘 Emergencies and natural disasters
+- 📵 Areas without mobile coverage
+- 🔒 Private encrypted communication
 
-### Características
+### Features
 
-- **WiFi Direct P2P**: Conexión directa entre dispositivos sin router
-- **Cifrado E2E**: ECDH + AES-256-GCM para máxima seguridad
-- **Mesh Networking**: Los mensajes saltan entre dispositivos hasta llegar al destino
-- **Store-and-Forward**: Los mensajes se almacenan y reenvían automáticamente
-- **TTL Alto (25 saltos)**: Cobertura para áreas metropolitanas como Madrid
-- **Mensajes Optimizados**: Máximo 140 caracteres para eficiencia
+- **WiFi Direct P2P**: Direct device-to-device connection without router
+- **E2E Encryption**: ECDH + AES-256-GCM for maximum security
+- **Mesh Networking**: Messages hop between devices until reaching destination
+- **Store-and-Forward**: Messages are automatically stored and forwarded
+- **High TTL (25 hops)**: Coverage for metropolitan areas like Madrid
+- **Optimized Messages**: Maximum 140 characters for efficiency
 
-### Cómo Funciona
+### How It Works
 
-1. **Configuración Inicial (una vez)**:
-   - Abre Orion → Modo Emergencia
-   - Pulsa "Compartir mi código"
-   - Envía el código a tu familia por WhatsApp
-   - Ellos te añaden como contacto de emergencia
+1. **Initial Setup (one-time)**:
+   - Open Orion → Emergency Mode
+   - Tap "Share my code"
+   - Send code to family via WhatsApp
+   - They add you as emergency contact
 
-2. **En caso de emergencia**:
-   - Abre Orion → Modo Emergencia
-   - Pulsa "ACTIVAR RED"
-   - Usa los botones rápidos:
-     - 🆘 **SOS**: Alerta de emergencia (broadcast a todos)
-     - ✅ **Estoy bien**: Notifica que estás a salvo
-     - 💬 **Mensaje**: Envía texto personalizado
+2. **In case of emergency**:
+   - Open Orion → Emergency Mode
+   - Tap "ACTIVATE NETWORK"
+   - Use quick buttons:
+     - 🆘 **SOS**: Emergency alert (broadcast to all)
+     - ✅ **I'm safe**: Notify you're safe
+     - 💬 **Message**: Send custom text
 
-3. **Propagación Mesh**:
-   - Tu mensaje salta entre dispositivos cercanos
-   - Cada dispositivo actúa como repetidor
-   - El mensaje llega incluso si el destinatario no está cerca
+3. **Mesh Propagation**:
+   - Your message hops between nearby devices
+   - Each device acts as repeater
+   - Message reaches destination even if recipient isn't nearby
 
-### Arquitectura Técnica
+### Technical Architecture
 
 ```
-📱 Tu dispositivo
-    ↓ WiFi Direct (cifrado E2E)
-📱 Dispositivo cercano A
+📱 Your device
+    ↓ WiFi Direct (E2E encrypted)
+📱 Nearby device A
     ↓ Store & Forward
-📱 Dispositivo cercano B
+📱 Nearby device B
     ↓ Multi-hop routing
-📱 Dispositivo de tu familia
+📱 Family member's device
 ```
 
-### Archivos del Módulo
+### Module Files
 
 ```
 emergency/
-├── EmergencyCrypto.kt     # Cifrado ECDH + AES-GCM
-├── MeshEmergency.kt       # Motor de red mesh
-├── EmergencyContacts.kt   # Gestión de contactos
-├── EmergencyStrings.kt    # Strings multi-idioma
-└── EmergencyUI.kt         # Interfaz Jetpack Compose
+├── EmergencyCrypto.kt     # ECDH + AES-GCM encryption
+├── MeshEmergency.kt       # Mesh network engine
+├── EmergencyContacts.kt   # Contact management
+├── EmergencyStrings.kt    # Multi-language strings
+└── EmergencyUI.kt         # Jetpack Compose interface
 ```
 
 ---
 
-## 🚀 Modos de Orion
+## 🚀 Orion Modes
 
-### ☁️ NUBE (Cloud)
+### ☁️ CLOUD
 - GPT-4, Claude, Gemini, DeepSeek, Qwen, Kimi
-- Memoria persistente automática
-- Máxima potencia
+- Automatic persistent memory
+- Maximum power
 
 ### 📱 LOCAL (Offline)
-- Modelos GGUF optimizados para móvil
-- Privacidad total
-- Sin necesidad de Internet
+- GGUF models optimized for mobile
+- Total privacy
+- No internet required
 
-### 👁️ VIVO (Realtime)
+### 👁️ LIVE (Realtime)
 - OpenAI Realtime API
-- Conversación por voz duplex
-- Respuesta instantánea
+- Duplex voice conversation
+- Instant response
 
-### 🆘 EMERGENCIA (Mesh)
+### 🆘 EMERGENCY (Mesh)
 - WiFi Direct P2P
-- Cifrado extremo a extremo
-- Funciona sin Internet ni datos
+- End-to-end encryption
+- Works without internet or data
 
 ---
 
-## 📋 Requisitos
+## 📋 Requirements
 
 - Android 8.0+ (API 26)
 - WiFi Direct compatible
-- Permisos de ubicación (para WiFi Direct)
+- Location permissions (for WiFi Direct)
 
-## 🔧 Permisos Necesarios (AndroidManifest.xml)
+## 🔧 Required Permissions (AndroidManifest.xml)
 
 ```xml
 <!-- WiFi Direct -->
@@ -107,7 +107,7 @@ emergency/
 <uses-feature android:name="android.hardware.wifi.direct" android:required="false" />
 ```
 
-## 🔧 Compilación
+## 🔧 Build
 
 ```bash
 ./gradlew assembleDebug
@@ -115,4 +115,4 @@ emergency/
 
 ---
 
-**¡Mantén a tu familia conectada incluso sin Internet!** 🆘📡
+**Keep your family connected even without internet!** 🆘📡

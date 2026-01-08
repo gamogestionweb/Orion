@@ -1,64 +1,64 @@
-# Dependencias para QR Scanner - ACTUALIZADO
+# Dependencies for QR Scanner - UPDATED
 
 ## Gradle (app/build.gradle.kts)
 
-**QUITAR** (si lo tienes):
+**REMOVE** (if present):
 ```kotlin
-// BORRAR ESTO:
+// DELETE THIS:
 implementation("com.google.mlkit:barcode-scanning:17.2.0")
 ```
 
-**AÑADIR** estas dependencias:
+**ADD** these dependencies:
 
 ```kotlin
-// ZXing para GENERAR QR
+// ZXing for QR GENERATION
 implementation("com.google.zxing:core:3.5.2")
 
-// ZXing Embedded para ESCANEAR QR (incluye Activity de cámara)
+// ZXing Embedded for QR SCANNING (includes camera Activity)
 implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 ```
 
-## Dependencias completas de CameraX (si no las tienes):
+## Complete CameraX dependencies (if not present):
 
 ```kotlin
-// CameraX (opcional, ZXing Embedded ya maneja la cámara)
+// CameraX (optional, ZXing Embedded already handles camera)
 implementation("androidx.camera:camera-core:1.3.1")
 implementation("androidx.camera:camera-camera2:1.3.1")
 implementation("androidx.camera:camera-lifecycle:1.3.1")
 implementation("androidx.camera:camera-view:1.3.1")
 ```
 
-## Resumen de cambios
+## Summary of Changes
 
-### ❌ ELIMINADO:
-- ML Kit Barcode Scanner (causaba problemas de resolución)
-- Scanner personalizado con CameraX (complejo)
-- Botón de conectar IP manual
+### ❌ REMOVED:
+- ML Kit Barcode Scanner (caused resolution issues)
+- Custom scanner with CameraX (complex)
+- Manual IP connect button
 
-### ✅ AÑADIDO:
-- ZXing Embedded (`journeyapps`) - Librería probada, funciona offline
-- QR visual generado con ZXing Core
-- Flujo simplificado: Escanear → Nombre → Listo
-- Chips de contactos para selección rápida
+### ✅ ADDED:
+- ZXing Embedded (`journeyapps`) - Proven library, works offline
+- Visual QR generated with ZXing Core
+- Simplified flow: Scan → Name → Done
+- Contact chips for quick selection
 
-### Ventajas de ZXing Embedded:
-1. **Activity propia** - No necesitas manejar CameraX
-2. **Offline** - No requiere Google Play Services
-3. **Probado** - Millones de descargas, muy estable
-4. **Simple** - Un launcher y listo
+### Advantages of ZXing Embedded:
+1. **Own Activity** - No need to manage CameraX
+2. **Offline** - Doesn't require Google Play Services
+3. **Proven** - Millions of downloads, very stable
+4. **Simple** - One launcher and ready
 
-## Uso en código
+## Code Usage
 
 ```kotlin
-// Crear launcher
+// Create launcher
 val qrScannerLauncher = rememberLauncherForActivityResult(ScanContract()) { result ->
-    result.contents?.let { code -> /* código escaneado */ }
+    result.contents?.let { code -> /* scanned code */ }
 }
 
-// Lanzar scanner
+// Launch scanner
 val options = ScanOptions().apply {
     setDesiredBarcodeFormats(ScanOptions.QR_CODE)
-    setPrompt("Escanea el QR")
+    setPrompt("Scan QR code")
     setBeepEnabled(false)
 }
 qrScannerLauncher.launch(options)

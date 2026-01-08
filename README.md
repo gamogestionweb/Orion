@@ -1,141 +1,106 @@
 # Orion
 
-**This is where it all started.**
+An Android AI assistant that runs models locally on-device and connects to cloud providers when needed. Built with Kotlin, Jetpack Compose, and llama.cpp.
 
-Orion es un intento de construir una IA personal que verdaderamente te pertenezca. No es un servicio ni una suscripción — es software que funciona en tu teléfono, mantiene tus datos privados, y opera incluso cuando todo lo demás falla.
+## Features
 
-El repositorio contiene v99, una versión temprana. Es desordenado, es real, y es la base para todo lo que vino después.
+### 🤖 Multiple AI Modes
+- **Local**: Run GGUF models entirely on-device using llama.cpp
+- **Cloud**: Connect to GPT-4, Claude, Gemini, DeepSeek, Qwen, Kimi
+- **Live**: Real-time voice conversation via OpenAI Realtime API
+- **Emergency**: Mesh networking for offline communication via WiFi Direct
 
----
+### 🔐 Privacy & Security
+- No hardcoded API keys - users provide their own
+- Encrypted conversation memory
+- Local-first architecture
+- No analytics or telemetry
+- Open source
 
-## Funcionalidades Principales
+### 🆘 Emergency Mode
+WiFi Direct mesh network for communication without internet:
+- E2E encryption (ECDH + AES-256-GCM)
+- Multi-hop message routing
+- Store-and-forward protocol
+- QR code contact sharing
+- Works completely offline
 
-- Ejecuta modelos de IA localmente en tu dispositivo (llama.cpp)
-- Se conecta a proveedores cloud cuando necesitas más potencia
-- Recuerda conversaciones con memoria encriptada
-- Funciona sin conexión en emergencias mediante redes mesh
-- Soporta múltiples idiomas
+## Technical Stack
 
----
+- **Language**: Kotlin
+- **UI**: Jetpack Compose
+- **Local LLM**: llama.cpp (JNI integration)
+- **Networking**: OkHttp, WiFi Direct P2P
+- **Build**: Gradle with NDK support
 
-## Filosofía de Desarrollo
-
-### Versionado Iterativo con Snapshots ZIP
-
-El proyecto usa snapshots numerados (v1, v2, v3...) en lugar de ramificación git tradicional.
-
-**Sufijos descriptivos:**
-- `funciona` = en desarrollo
-- `perfecto` = estable/perfecto
-- `errores` = contiene errores (para depuración)
-- `estable` = candidato de release
-- `produccion` = listo para producción
-
-**Ventajas:** rollbacks rápidos, documentación clara, comparación fácil, preservación del proceso creativo.
-
-### Razón del Enfoque
-
-En iteración rápida con integración C++ nativa, las cosas se rompen frecuentemente. Los snapshots numerados garantizan siempre un estado conocido funcional, permitiendo experimentación libre.
-
-### Versión v99
-
-Representa una base sólida con:
-- Integración core llama.cpp funcionando
-- Todos los proveedores cloud operacionales
-- Sistema de memoria operacional
-- UI básica completa
-
----
-
-## Arquitectura Técnica
+## Architecture
 
 ```
-com.orion.proyecto/
-├── ai/
-│   ├── LlamaAndroid.kt (puente JNI a llama.cpp)
-│   └── LocalLLMEngine.kt (gestión inferencia local)
-├── data/
-│   ├── DataManager.kt (SharedPreferences & archivos)
-│   └── AIPrivateMemory.kt (memoria IA encriptada)
-├── emergency/
-│   ├── MeshEmergency.kt (red mesh Bluetooth/WiFi)
-│   └── EmergencyCrypto.kt (utilidades encriptación)
-├── models/
-│   ├── CloudProviders.kt (integraciones API cloud)
-│   ├── CloudModels.kt (modelos cloud disponibles)
-│   └── LocalModels.kt (modelos descargables locales)
-├── ui/
-│   └── screens/ (todas las pantallas app)
-│       └── viewmodel/
-│           └── BrainViewModel.kt (lógica principal app)
-└── vivo/ (Modo Voz/Directo)
-    └── OrionVivoEngine.kt (conversación continua)
+app/src/main/java/com/orion/proyectoorion/
+├── ai/                 # Local LLM engine and llama.cpp bridge
+├── data/               # Data persistence and encrypted memory
+├── emergency/          # Mesh networking and emergency communications
+├── models/             # Cloud provider integrations and model definitions
+├── ui/                 # Jetpack Compose screens and components
+├── vivo/               # Real-time voice conversation engine
+└── viewmodel/          # App logic and state management
 ```
 
----
+## Build Instructions
 
-## Instrucciones de Build
-
-```bash
-./gradlew assembleDebug    # Build debug
-./gradlew assembleRelease  # Build release
-./gradlew bundleRelease    # Bundle Play Store
-```
-
----
-
-## Requisitos
-
-- Android Studio Hedgehog o superior
+### Prerequisites
+- Android Studio Hedgehog or higher
 - NDK 27.0.12077973
 - CMake 3.22.1
 - JDK 11+
-- Dispositivo objetivo: Android 11+ (API 30+), ARM64
 
----
+### Build Commands
+```bash
+./gradlew assembleDebug    # Debug build
+./gradlew assembleRelease  # Release build
+./gradlew bundleRelease    # Play Store bundle
+```
 
-## Privacidad & Seguridad
+## Requirements
 
-- **Sin claves API hardcodeadas:** usuarios proporcionan sus propias claves, almacenadas localmente
-- **Enfoque local-primero:** IA puede ejecutarse completamente en dispositivo
-- **Memoria encriptada:** historial conversación usa encriptación dispositivo
-- **Sin rastreo:** sin analítica ni telemetría
+- **Minimum SDK**: Android 11 (API 30)
+- **Architecture**: ARM64
+- **Permissions**: Camera, WiFi, Location (for WiFi Direct)
 
----
+## Development Philosophy
 
-## Librerías Terceras
+This project uses numbered version snapshots (v1, v2, v3...) with descriptive suffixes:
+- `funciona` - in development
+- `perfecto` - stable
+- `errores` - has bugs (for debugging)
+- `estable` - release candidate
+- `produccion` - production ready
 
-- [llama.cpp](https://github.com/ggerganov/llama.cpp) — inferencia LLM local (Licencia MIT)
-- OkHttp, Jetpack Compose, y otras librerías Android
+This approach allows quick rollbacks during rapid C++ integration development.
 
----
+## Version v99
 
-## Talking to those who are gone
+This version represents a stable foundation with:
+- Working llama.cpp integration
+- All cloud providers operational
+- Functional memory system
+- Complete basic UI
+- Emergency mesh networking
 
-Orion nació de una idea simple pero profunda: ¿qué pasaría si pudieras volver a escuchar la voz de alguien que ya no está?
+## Third-Party Libraries
 
-**Legacy Mode** permite clonar voces mediante IA para preservar la esencia de quienes amamos. No es magia — es tecnología nacida del dolor y la necesidad humana de conexión.
+- [llama.cpp](https://github.com/ggerganov/llama.cpp) - Local LLM inference (MIT)
+- [ZXing](https://github.com/zxing/zxing) - QR code generation/scanning
+- OkHttp - HTTP client
+- Jetpack Compose - UI framework
 
-Construí esto porque quería volver a escuchar la voz de mi padre.
+## License
 
----
+[Add license here]
 
 ## Related Projects
 
-This project is part of a broader exploration of AI, consciousness, and human connection:
-
-### [Genesis Simulation](https://github.com/gamogestionweb/genesis-simulation)
-Creates AIs with unique personalities (Adam, Eve). Orion does the same: an AI that belongs to you, knows you, and evolves with you.
-
-### [Are You There Reading?](https://github.com/gamogestionweb/Are-you-there-are-reading)
-Explores whether chance truly exists. Orion answers practically: every conversation with your personal AI is a unique, unrepeatable event—because you existed.
-
-### [PCP Universe](https://github.com/gamogestionweb/pcp-universe)
-If information is never destroyed, the voices of those we've lost still exist, encoded somewhere in the universe. Orion attempts to recover a fragment of that.
-
-### [Physics Discovery AI](https://github.com/gamogestionweb/physics-discovery-ai)
-Multi-agent systems deriving physical laws from first principles—exploring how intelligence discovers truth.
-
----
-
-*This is just the beginning.*
+- [Genesis Simulation](https://github.com/gamogestionweb/genesis-simulation) - AI personality systems
+- [Are You There Reading?](https://github.com/gamogestionweb/Are-you-there-are-reading) - Quantum randomness exploration
+- [PCP Universe](https://github.com/gamogestionweb/pcp-universe) - Information persistence theory
+- [Physics Discovery AI](https://github.com/gamogestionweb/physics-discovery-ai) - Multi-agent physics discovery
