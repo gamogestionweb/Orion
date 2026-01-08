@@ -1,0 +1,37 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Brain outline -->
+    <path
+        android:fillColor="#BB86FC"
+        android:pathData="M13,3C9.23,3 6.19,5.95 6,9.66l-1.92,0.19C3.79,9.85 3.48,10 3.2,10.25c-0.55,0.48 -0.85,1.25 -0.85,2v3.5c0,0.75 0.3,1.52 0.85,2c0.28,0.25 0.59,0.4 0.88,0.4l1.92,0.19C6.19,22.05 9.23,25 13,25h0c3.77,0 6.81,-2.95 7,-6.66l1.92,-0.19c0.29,0 0.6,-0.15 0.88,-0.4c0.55,-0.48 0.85,-1.25 0.85,-2v-3.5c0,-0.75 -0.3,-1.52 -0.85,-2c-0.28,-0.25 -0.59,-0.4 -0.88,-0.4l-1.92,-0.19C19.81,5.95 16.77,3 13,3z"/>
+    <!-- Neural connections -->
+    <path
+        android:fillColor="#BB86FC"
+        android:fillAlpha="0.4"
+        android:pathData="M10,8m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+    <path
+        android:fillColor="#BB86FC"
+        android:fillAlpha="0.4"
+        android:pathData="M16,9m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+    <path
+        android:fillColor="#BB86FC"
+        android:fillAlpha="0.4"
+        android:pathData="M10,14m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+    <path
+        android:fillColor="#BB86FC"
+        android:fillAlpha="0.4"
+        android:pathData="M16,15m-1,0a1,1 0,1 1,2 0a1,1 0,1 1,-2 0"/>
+    <path
+        android:strokeColor="#BB86FC"
+        android:strokeAlpha="0.3"
+        android:strokeWidth="0.8"
+        android:pathData="M10.5,9L15.5,14"/>
+    <path
+        android:strokeColor="#BB86FC"
+        android:strokeAlpha="0.3"
+        android:strokeWidth="0.8"
+        android:pathData="M15.5,9L10.5,14"/>
+</vector>

@@ -63,34 +63,65 @@ fun ScreenLanguage(onLanguageSelected: (String) -> Unit) {
         Image(
             painter = painterResource(id = R.drawable.splash_icon),
             contentDescription = "Orion",
-            modifier = Modifier.size(100.dp)
+            modifier = Modifier.size(110.dp)
         )
-        Spacer(Modifier.height(16.dp))
-        Text("ORION", color = Color.White, fontSize = 32.sp, fontWeight = FontWeight.Black, letterSpacing = 8.sp)
-        Text("AI ASSISTANT", color = Color.Gray, fontSize = 12.sp, letterSpacing = 4.sp)
-        Spacer(Modifier.height(40.dp))
+        Spacer(Modifier.height(20.dp))
+        Text(
+            "ORION",
+            color = OrionPurpleLight,
+            fontSize = 40.sp,
+            fontWeight = FontWeight.Black,
+            fontFamily = OrionDisplayFont,
+            letterSpacing = 10.sp
+        )
+        Text(
+            "AI ASSISTANT",
+            color = OrionTextSecondary,
+            fontSize = 13.sp,
+            fontFamily = OrionMonoFont,
+            letterSpacing = 5.sp
+        )
+        Spacer(Modifier.height(50.dp))
 
         ALL_LANGUAGES.forEach { (name, code, flag) ->
-            OutlinedButton(
+            Button(
                 onClick = { onLanguageSelected(code) },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 6.dp)
-                    .height(56.dp),
-                shape = RoundedCornerShape(12.dp),
-                border = BorderStroke(1.dp, Color(0xFF333333)),
-                colors = ButtonDefaults.outlinedButtonColors(containerColor = OrionDarkGrey.copy(0.5f))
+                    .padding(vertical = 8.dp)
+                    .shadow(
+                        elevation = 2.dp,
+                        shape = RoundedCornerShape(14.dp),
+                        spotColor = OrionPurple.copy(alpha = 0.2f)
+                    )
+                    .height(60.dp),
+                shape = RoundedCornerShape(14.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = OrionSurfaceVariant
+                ),
+                border = BorderStroke(1.5.dp, OrionPurple.copy(0.3f))
             ) {
                 Row(
                     Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Start,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(flag, fontSize = 24.sp)
+                    Text(flag, fontSize = 26.sp)
                     Spacer(Modifier.width(16.dp))
-                    Text(name, fontSize = 16.sp, color = OrionText)
+                    Text(
+                        name,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        fontFamily = OrionBodyFont,
+                        color = OrionText
+                    )
                     Spacer(Modifier.weight(1f))
-                    Icon(Icons.Default.KeyboardArrowRight, null, tint = OrionBlue.copy(0.6f))
+                    Icon(
+                        Icons.Default.KeyboardArrowRight,
+                        null,
+                        tint = OrionPurple,
+                        modifier = Modifier.size(24.dp)
+                    )
                 }
             }
         }
@@ -132,88 +163,63 @@ fun ScreenEngineSelect(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(ui.engineSelectTitle, color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold, letterSpacing = 2.sp)
-        Spacer(Modifier.height(32.dp))
+        Text(
+            ui.engineSelectTitle,
+            color = OrionPurpleLight,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            fontFamily = OrionDisplayFont,
+            letterSpacing = 3.sp
+        )
+        Spacer(Modifier.height(40.dp))
 
         // MODO NUBE
-        Card(
+        OrionCard(
+            title = ui.engineCloudTitle,
+            description = ui.engineCloudDesc,
             onClick = onCloudSelected,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(120.dp),
-            colors = CardDefaults.cardColors(containerColor = OrionDarkGrey),
-            border = BorderStroke(1.dp, OrionPurple.copy(0.4f)),
-            shape = RoundedCornerShape(16.dp)
-        ) {
-            Row(
-                Modifier
-                    .fillMaxSize()
-                    .padding(20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    Modifier
-                        .size(50.dp)
-                        .background(OrionPurple.copy(0.15f), RoundedCornerShape(12.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("☁", fontSize = 28.sp)
-                }
-                Spacer(Modifier.width(16.dp))
-                Column(Modifier.weight(1f)) {
-                    Text(ui.engineCloudTitle, color = OrionPurple, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Spacer(Modifier.height(4.dp))
-                    Text(ui.engineCloudDesc, color = Color.Gray, fontSize = 13.sp)
-                    Text("🇺🇸 Gemini · ChatGPT · Claude", color = OrionBlue.copy(0.7f), fontSize = 11.sp)
-                    Text("🇨🇳 DeepSeek · Qwen · Kimi", color = OrionOrange.copy(0.7f), fontSize = 11.sp)
-                }
-            }
-        }
-
-        Spacer(Modifier.height(12.dp))
+            modifier = Modifier.padding(vertical = 8.dp),
+            icon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_orion_cloud),
+                    contentDescription = null,
+                    tint = OrionPurple,
+                    modifier = Modifier.size(32.dp)
+                )
+            },
+            accentColor = OrionPurple,
+            subtitle = "🇺🇸 Gemini · ChatGPT · Claude\n🇨🇳 DeepSeek · Qwen · Kimi"
+        )
 
         // MODO LOCAL
-        Card(
+        OrionCard(
+            title = ui.engineLocalTitle,
+            description = ui.engineLocalDesc,
             onClick = onLocalSelected,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(120.dp),
-            colors = CardDefaults.cardColors(containerColor = OrionDarkGrey),
-            border = BorderStroke(1.dp, OrionGreen.copy(0.4f)),
-            shape = RoundedCornerShape(16.dp)
-        ) {
-            Row(
-                Modifier
-                    .fillMaxSize()
-                    .padding(20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    Modifier
-                        .size(50.dp)
-                        .background(OrionGreen.copy(0.15f), RoundedCornerShape(12.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("📱", fontSize = 28.sp)
-                }
-                Spacer(Modifier.width(16.dp))
-                Column(Modifier.weight(1f)) {
-                    Text(ui.engineLocalTitle, color = OrionGreen, fontWeight = FontWeight.Bold, fontSize = 16.sp)
-                    Spacer(Modifier.height(4.dp))
-                    Text(ui.engineLocalDesc, color = Color.Gray, fontSize = 13.sp)
-                    Text(ui.noAutoMemory, color = OrionOrange.copy(0.8f), fontSize = 11.sp)
-                }
-            }
-        }
-
-        Spacer(Modifier.height(12.dp))
+            modifier = Modifier.padding(vertical = 8.dp),
+            icon = {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_orion_local),
+                    contentDescription = null,
+                    tint = OrionGreen,
+                    modifier = Modifier.size(32.dp)
+                )
+            },
+            accentColor = OrionGreen,
+            badge = ui.noAutoMemory
+        )
 
         // MODO VIVO
         Card(
             onClick = onVivoSelected,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(100.dp),
+                .padding(vertical = 8.dp)
+                .shadow(
+                    elevation = 4.dp,
+                    shape = RoundedCornerShape(18.dp),
+                    spotColor = OrionVivo.copy(alpha = 0.3f * glowAlpha)
+                ),
             colors = CardDefaults.cardColors(containerColor = OrionDarkGrey),
             border = BorderStroke(
                 2.dp,
@@ -225,29 +231,34 @@ fun ScreenEngineSelect(
                     )
                 )
             ),
-            shape = RoundedCornerShape(16.dp)
+            shape = RoundedCornerShape(18.dp)
         ) {
             Row(
                 Modifier
-                    .fillMaxSize()
+                    .fillMaxWidth()
                     .padding(20.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
-                    Modifier
-                        .size(50.dp)
+                    modifier = Modifier
+                        .size(60.dp)
+                        .clip(RoundedCornerShape(16.dp))
                         .background(
                             Brush.radialGradient(
                                 colors = listOf(
                                     OrionVivo.copy(alpha = 0.3f * glowAlpha),
                                     OrionVivo.copy(alpha = 0.1f)
                                 )
-                            ),
-                            RoundedCornerShape(12.dp)
+                            )
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("👁", fontSize = 28.sp)
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_orion_vivo),
+                        contentDescription = null,
+                        tint = OrionVivo.copy(alpha = glowAlpha),
+                        modifier = Modifier.size(32.dp)
+                    )
                 }
                 Spacer(Modifier.width(16.dp))
                 Column(Modifier.weight(1f)) {
@@ -255,59 +266,39 @@ fun ScreenEngineSelect(
                         ui.engineVivoTitle,
                         color = OrionVivo,
                         fontWeight = FontWeight.Black,
-                        fontSize = 16.sp,
+                        fontFamily = OrionDisplayFont,
+                        fontSize = 17.sp,
                         letterSpacing = 1.sp
                     )
-                    Spacer(Modifier.height(4.dp))
-                    Text(ui.engineVivoDesc, color = Color.Gray, fontSize = 13.sp)
+                    Spacer(Modifier.height(6.dp))
+                    Text(
+                        ui.engineVivoDesc,
+                        color = OrionTextSecondary,
+                        fontFamily = OrionBodyFont,
+                        fontSize = 13.sp,
+                        lineHeight = 18.sp
+                    )
                 }
-                Icon(
-                    Icons.Default.KeyboardArrowRight,
-                    null,
-                    tint = OrionVivo.copy(alpha = glowAlpha)
-                )
             }
         }
-
-        Spacer(Modifier.height(12.dp))
 
         // MODO EMERGENCIA
-        Card(
+        OrionCard(
+            title = ui.engineEmergencyTitle,
+            description = ui.engineEmergencyDesc,
             onClick = onEmergencySelected,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp),
-            colors = CardDefaults.cardColors(containerColor = OrionDarkGrey),
-            border = BorderStroke(2.dp, OrionRed.copy(0.6f)),
-            shape = RoundedCornerShape(16.dp)
-        ) {
-            Row(
-                Modifier
-                    .fillMaxSize()
-                    .padding(20.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    Modifier
-                        .size(50.dp)
-                        .background(OrionRed.copy(0.15f), RoundedCornerShape(12.dp)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text("🆘", fontSize = 28.sp)
-                }
-                Spacer(Modifier.width(16.dp))
-                Column(Modifier.weight(1f)) {
-                    Text(ui.engineEmergencyTitle, color = OrionRed, fontWeight = FontWeight.Black, fontSize = 16.sp, letterSpacing = 1.sp)
-                    Spacer(Modifier.height(4.dp))
-                    Text(ui.engineEmergencyDesc, color = Color.Gray, fontSize = 13.sp)
-                }
+            modifier = Modifier.padding(vertical = 8.dp),
+            icon = {
                 Icon(
-                    Icons.Default.KeyboardArrowRight,
-                    null,
-                    tint = OrionRed
+                    painter = painterResource(id = R.drawable.ic_orion_emergency),
+                    contentDescription = null,
+                    tint = OrionRed,
+                    modifier = Modifier.size(32.dp)
                 )
-            }
-        }
+            },
+            accentColor = OrionRed,
+            badge = "SOS"
+        )
 
         Spacer(Modifier.height(16.dp))
     }
@@ -960,9 +951,22 @@ fun ChatTopBar(
                 onClick = onToggleMemory,
                 modifier = Modifier
                     .size(44.dp)
-                    .background(OrionDarkGrey, CircleShape)
+                    .background(
+                        Brush.radialGradient(
+                            colors = listOf(
+                                ac.copy(0.15f),
+                                OrionDarkGrey
+                            )
+                        ),
+                        CircleShape
+                    )
             ) {
-                Text("🧠", fontSize = 22.sp)
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_orion_brain),
+                    contentDescription = "Memory",
+                    tint = ac,
+                    modifier = Modifier.size(24.dp)
+                )
             }
         }
     }
@@ -1045,28 +1049,57 @@ fun ThinkingIndicator(viewModel: BrainViewModel) {
     Row(Modifier.padding(vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
         Box(
             Modifier
-                .size(32.dp)
-                .background(col.copy(0.15f), CircleShape),
+                .size(40.dp)
+                .background(
+                    Brush.radialGradient(
+                        colors = listOf(
+                            col.copy(0.2f),
+                            col.copy(0.05f)
+                        )
+                    ),
+                    CircleShape
+                ),
             contentAlignment = Alignment.Center
         ) {
-            Text(
-                when (viewModel.processingState) {
-                    ProcessingState.THINKING -> "🤔"
-                    ProcessingState.ANALYZING -> "🔍"
-                    ProcessingState.RESPONDING -> "💭"
-                    ProcessingState.IDLE -> "⏳"
-                },
-                fontSize = 16.sp
+            val iconRes = when (viewModel.processingState) {
+                ProcessingState.THINKING -> R.drawable.ic_orion_thinking
+                ProcessingState.ANALYZING -> R.drawable.ic_orion_analyzing
+                ProcessingState.RESPONDING -> R.drawable.ic_orion_responding
+                ProcessingState.IDLE -> R.drawable.ic_orion_brain
+            }
+            Icon(
+                painter = painterResource(id = iconRes),
+                contentDescription = null,
+                tint = col,
+                modifier = Modifier.size(22.dp)
             )
         }
-        Spacer(Modifier.width(10.dp))
-        Text(txt, color = col, fontSize = 13.sp, fontWeight = FontWeight.Medium)
-        Spacer(Modifier.width(4.dp))
-        Text("●", color = col.copy(alpha = d1), fontSize = 8.sp)
-        Spacer(Modifier.width(2.dp))
-        Text("●", color = col.copy(alpha = d2), fontSize = 8.sp)
-        Spacer(Modifier.width(2.dp))
-        Text("●", color = col.copy(alpha = d3), fontSize = 8.sp)
+        Spacer(Modifier.width(12.dp))
+        Text(
+            txt,
+            color = col,
+            fontSize = 13.sp,
+            fontWeight = FontWeight.SemiBold,
+            fontFamily = OrionBodyFont
+        )
+        Spacer(Modifier.width(6.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+            Box(
+                Modifier
+                    .size(6.dp)
+                    .background(col.copy(alpha = d1), CircleShape)
+            )
+            Box(
+                Modifier
+                    .size(6.dp)
+                    .background(col.copy(alpha = d2), CircleShape)
+            )
+            Box(
+                Modifier
+                    .size(6.dp)
+                    .background(col.copy(alpha = d3), CircleShape)
+            )
+        }
     }
 }
 
